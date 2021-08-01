@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { Route, Switch } from 'react-router-dom'
 
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
+import Profile from './components/Profile'
 import { connect } from 'react-redux';
+
 
 import axios from 'axios';
 
@@ -25,8 +28,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <SmurfList/>
-          <AddForm/>
+          <Switch>
+            <Route path={`/profile/:id`}><Profile/></Route>
+            <Route path='/'><SmurfList/><AddForm/></Route>
+          </Switch>
         </main>
       </div>
     );
